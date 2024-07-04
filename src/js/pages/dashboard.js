@@ -1,7 +1,6 @@
 const Dashboard = {
   async init() {
     await this._initialData();
-    this._initialListener();
   },
 
   async _initialData() {
@@ -12,63 +11,6 @@ const Dashboard = {
     }
     console.log(data);
     this._stories = data;
-  },
-
-  _populateTransactionsDataToCard(stories = null) {
-    if (!(typeof stories === 'object')) {
-      throw new Error(`Parameter data should be an object.`);
-    }
-
-    if (!Array.isArray(stories)) {
-      throw new Error('Parameter stories should be an array.');
-    }
-
-    let amountIncome = 0;
-    let amountExpense = 0;
-
-    stories.forEach((item) => {
-      if (item.type === 'income') {
-        amountIncome += item.amount;
-      } else if (item.type === 'expense') {
-        amountExpense += item.amount;
-      }
-    });
-
-    document
-      .querySelector('#transactions-card')
-      .setAttribute('content', `${stories.length} Transaksi`);
-    document
-      .querySelector('#income-card')
-      .setAttribute('content', `Rp ${amountIncome}`);
-    document
-      .querySelector('#expense-card')
-      .setAttribute('content', `Rp ${amountExpense}`);
-  },
-
-  _populateTransactionsRecordToTable(stories = null) {
-    if (!(typeof stories === 'object')) {
-      throw new Error(
-        `Parameter stories should be an object. The value is ${stories}`,
-      );
-    }
-
-    if (!Array.isArray(stories)) {
-      throw new Error(
-        `Parameter stories should be an array. The value is ${stories}`,
-      );
-    }
-
-    const recordBodyTable = document.querySelector('#recordsTable tbody');
-
-    recordBodyTable.innerHTML = '';
-    if (stories.length <= 0) {
-      recordBodyTable.innerHTML = this._templateEmptyBodyTable();
-      return;
-    }
-
-    stories.forEach((item, idx) => {
-      recordBodyTable.innerHTML += this._templateBodyTable(idx, stories[idx]);
-    });
   },
 
   _templateBodyTable(index, transactionRecord) {

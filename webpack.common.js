@@ -26,6 +26,10 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.css$/,
+        type: 'asset/source',
+      },
+      {
         test: /\.(s[ac]ss)$/i,
         use: [
           {
@@ -53,7 +57,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       title: 'Story App',
       filename: 'index.html',
-      template: path.resolve(__dirname, 'src/views/index.html'),
+      template: path.resolve(__dirname, 'src/views/dashboard.html'),
       ...htmlWebpackPluginConfig,
     }),
 

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title><%= htmlWebpackPlugin.options.title %> | Story App</title>
+  </head>
+  <body>
+    <header>
+      <navbar-content></navbar-content>
+    </header>
+
+    <main>
+      <div class="main-content">
+        <div class="container py-5">
+          <h1 class="mb-3">Dashboard</h1>
+
+          <!-- Card Information -->
+          <div class="row mb-5 g-3">
+            <carousel-content></carousel-content>
+          </div>
+          <!-- Records -->
+          <div>
+            <div class="d-flex justify-content-between align-items-center">
+              <h1>Riwayat Transaksi</h1>
+              <button-link
+                classes="btn-primary text-capitalize"
+                to="/transactions/add.html"
+                icon="bi-plus-lg"
+                content="Tambah Transaksi"
+              ></button-link>
+            </div>
+            <div class="row mt-3">
+              <div class="col">
+                <table class="table table-sm table-bordered" id="recordsTable">
+                  <thead>
+                    <tr>
+                      <th class="text-center">No</th>
+                      <th class="text-center">Tipe</th>
+                      <th class="text-center">Nama</th>
+                      <th class="text-center">Jumlah</th>
+                      <th class="text-center">Tanggal</th>
+                      <th class="text-center">Aksi</th>
+                    </tr>
+                  </thead>
+                  <tbody></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <footer-content></footer-content>
+    </footer>
+  </body>
+</html>
