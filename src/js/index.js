@@ -7,16 +7,33 @@ import * as bootstrap from 'bootstrap';
 // Import lit components
 import './components/NavbarContent';
 import './components/FooterContent';
+import './components/NavLink';
 
-const fetchData = require('../public/data/DATA');
+import Dashboard from './pages/dashboard';
+import Add from './pages/story/add';
 
-const main = async () => {
-  const data = await fetchData();
-  if (data) {
-    console.log(data);
-  } else {
-    console.log('Failed to fetch data');
+const routes = {
+  '/': Dashboard,
+  '/story/add.html': Add,
+};
+
+const detectRoute = () => routes[window.location.pathname];
+
+const initPages = () => {
+  const header = document.querySelector('header');
+  const main = document.querySelector('main');
+  const footer = document.querySelector('footer');
+
+  if (header && main && footer) {
+    main.style.minHeight = `calc(100vh - ${
+      header.clientHeight + footer.clientHeight
+    }px)`;
   }
 };
 
-main();
+window.addEventListener('DOMContentLoaded', async () => {
+  initPages();
+
+  const route = detectRoute();
+  route.init();
+});
