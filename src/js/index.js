@@ -1,14 +1,14 @@
 // Import our custom CSS
-import '../sass/vendors-extensions/main.scss';
-
-// Import javascript file as needed
-import * as bootstrap from 'bootstrap';
+import '../sass/main.scss';
+// import '../css/main.css';
 
 // Import lit components
 import './components/NavbarContent';
 import './components/CarouselContent';
 import './components/FooterContent';
 import './components/NavLink';
+import './components/StoryContent';
+import './components/StoryItem';
 
 import Dashboard from './pages/dashboard';
 import Add from './pages/story/add';
