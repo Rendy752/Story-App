@@ -45,8 +45,6 @@ class StoryItem extends LitWithoutShadowDom {
         `Attribute "createdAt" must be applied to the ${this.localName} element`,
       );
     }
-
-    // createdAt: '2022-01-08T06:34:18.598Z'
   }
 
   render() {
@@ -54,14 +52,14 @@ class StoryItem extends LitWithoutShadowDom {
       <div class="container" id="${this.id}">
         <div class="front" style="background-image: url(${this.photoUrl})">
           <div class="inner">
-            <p>
-              ${new Date(this.createdAt).toLocaleDateString('en-EN', {
+            <p>${this.name}</p>
+            <span
+              >${new Date(this.createdAt).toLocaleDateString('en-EN', {
                 year: 'numeric',
                 month: 'long',
                 day: 'numeric',
-              })}
-            </p>
-            <span>${this.name}</span>
+              })}</span
+            >
           </div>
         </div>
         <div class="back">
@@ -72,33 +70,6 @@ class StoryItem extends LitWithoutShadowDom {
       </div>
     `;
   }
-  //   render() {
-  //     return html`
-  //       <div class="col" ontouchstart="this.classList.toggle('hover');" id="${
-  //         this.id
-  //       }>
-  //         <div class="container">
-  //           <div class="front" style="url(${this.photoUrl})">
-  //             <div class="inner">
-  //               <p>${new Date(this.createdAt).toLocaleDateString('en-EN', {
-  //                 year: 'numeric',
-  //                 month: 'long',
-  //                 day: 'numeric',
-  //               })}</p>
-  //               <span>${this.name}</span>
-  //             </div>
-  //           </div>
-  //           <div class="back">
-  //             <div class="inner">
-  //               <p>
-  //                 ${this.description}
-  //               </p>
-  //             </div>
-  //           </div>
-  //         </div>
-  //       </div>
-  //     `;
-  //   }
 }
 
 customElements.define('story-item', StoryItem);
