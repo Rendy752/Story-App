@@ -6,6 +6,7 @@ import * as bootstrap from 'bootstrap';
 
 // Import lit components
 import './components/NavbarContent';
+import './components/CarouselContent';
 import './components/FooterContent';
 import './components/NavLink';
 
