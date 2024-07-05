@@ -1,9 +1,10 @@
+import 'bootstrap';
 // Import our custom CSS
 import '../sass/main.scss';
-// import '../css/main.css';
 
 // Import lit components
 import './components/NavbarContent';
+import './components/DashboardContent';
 import './components/CarouselContent';
 import './components/FooterContent';
 import './components/NavLink';
@@ -36,5 +37,8 @@ window.addEventListener('DOMContentLoaded', async () => {
   initPages();
 
   const route = detectRoute();
+  document
+    .querySelector('navbar-content')
+    .setAttribute('activeLink', window.location.pathname);
   route.init();
 });

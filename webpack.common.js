@@ -61,6 +61,13 @@ module.exports = {
       ...htmlWebpackPluginConfig,
     }),
 
+    new HtmlWebpackPlugin({
+      title: 'Add Story',
+      filename: 'story/add.html',
+      template: path.resolve(__dirname, 'src/views/story/add.html'),
+      ...htmlWebpackPluginConfig,
+    }),
+
     new CopyWebpackPlugin({
       patterns: [
         {

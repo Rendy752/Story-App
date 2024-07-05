@@ -5,6 +5,7 @@ class NavLink extends LitWithoutShadowDom {
   static properties = {
     name: { type: String, reflect: true },
     link: { type: String, reflect: true },
+    activeLink: { type: String, reflect: true },
   };
 
   constructor() {
@@ -13,6 +14,12 @@ class NavLink extends LitWithoutShadowDom {
   }
 
   _checkAvailabilityProperty() {
+    if (!this.hasAttribute('name')) {
+      throw new Error(
+        `Attribute "name" must be applied to the ${this.localName} element`,
+      );
+    }
+
     if (!this.hasAttribute('link')) {
       throw new Error(
         `Atribut "link" harus diterapkan pada elemen ${this.localName}`,
@@ -22,8 +29,13 @@ class NavLink extends LitWithoutShadowDom {
 
   render() {
     return html`
-      <li class="nav-item">
-        <a class="nav-link active" href="${this.link}">${this.name}</a>
+      <li class="nav-item fs-5">
+        <a
+          class="nav-link ${this.activeLink === this.link && 'active'}"
+          aria-current="page"
+          href="${this.link}"
+          >${this.name}</a
+        >
       </li>
     `;
   }

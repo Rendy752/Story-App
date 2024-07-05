@@ -5,6 +5,7 @@ import { msg, updateWhenLocaleChanges } from '@lit/localize';
 class NavbarContent extends LitWithoutShadowDom {
   static properties = {
     brandName: { type: String, reflect: true },
+    activeLink: { type: String, reflect: true },
   };
 
   constructor() {
@@ -15,55 +16,61 @@ class NavbarContent extends LitWithoutShadowDom {
 
   render() {
     return html`
-      <nav class="navbar bg-primary fixed-top">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">StoryApp</a>
+      <nav
+        class="navbar navbar-expand-lg navbar-dark bg-dark mb-4 fixed-top"
+        id="navbar"
+      >
+        <div class="container">
+          <a class="navbar-brand" href="/"><h2>Story App</h2></a>
           <button
-            class="navbar-toggler bg-light"
+            class="navbar-toggler"
             type="button"
             data-bs-toggle="offcanvas"
-            data-bs-target="#offcanvasNavbar"
-            aria-controls="offcanvasNavbar"
-            aria-label="Toggle navigation"
+            data-bs-target="#offcanvasNavbarExample-expand-lg"
+            aria-controls="offcanvasNavbarExample-expand-lg"
           >
-            <span class="navbar-toggler-icon"></span>
+            <span
+              class="navbar-toggler-icon"
+              data-bs-target="#offcanvasNavbarExample-expand-lg"
+            ></span>
           </button>
           <div
-            class="offcanvas offcanvas-end"
+            class="offcanvas offcanvas-start bg-dark"
+            data-bs-hideresize="true"
             tabindex="-1"
-            id="offcanvasNavbar"
-            aria-labelledby="offcanvasNavbarLabel"
+            id="offcanvasNavbarExample-expand-lg"
+            aria-labelledby="offcanvasNavbarExample-expand-lg"
           >
             <div class="offcanvas-header">
-              <h5 class="offcanvas-title" id="offcanvasNavbarLabel">
-                StoryApp
-              </h5>
+              <h2
+                class="offcanvas-title"
+                id="offcanvasLabel"
+                style="color:white;"
+              >
+                Story App
+              </h2>
               <button
                 type="button"
-                class="btn-close"
+                class="btn-close btn-close-white text-reset"
                 data-bs-dismiss="offcanvas"
                 aria-label="Close"
               ></button>
             </div>
-            <div class="offcanvas-body">
-              <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                <nav-link name="${msg(`Dashboard`)}" link="/"></nav-link>
+            <div class="offcanvas-body bg-dark">
+              <ul
+                class="navbar-nav justify-content-end flex-grow-1 pe-3 d-flex gap-3"
+              >
                 <nav-link
-                  name="${msg(`Add Story`)}"
+                  name="Dashboard"
+                  link="/"
+                  activeLink="${this.activeLink}"
+                ></nav-link>
+                <nav-link
+                  name="Add Story"
                   link="/story/add.html"
+                  activeLink="${this.activeLink}"
                 ></nav-link>
               </ul>
-              <form class="d-flex mt-3" role="search">
-                <input
-                  class="form-control me-2"
-                  type="search"
-                  placeholder="Search"
-                  aria-label="Search"
-                />
-                <button class="btn btn-outline-success" type="submit">
-                  Search
-                </button>
-              </form>
             </div>
           </div>
         </div>
