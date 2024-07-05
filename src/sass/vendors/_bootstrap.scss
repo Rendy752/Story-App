@@ -5,6 +5,7 @@
 // Using built-in modules
 @use 'sass:map';
 // Custom modules
+@use '../vendors-extensions/components/anchor' as anchor;
 @use '../vendors-extensions/components/button' as button;
 @use '../vendors-extensions/variables/colors' as color;
 //
@@ -63,8 +64,32 @@
 $theme-colors: map.deep-merge($theme-colors, color.$theme-colors);
 
 // Buttons
-$btn-padding-x: button.$padding-x;
-$btn-padding-y: button.$padding-y;
-$btn-border-radius: button.$border-radius;
-$btn-border-radius-sm: button.$border-radius-sm;
-$btn-border-radius-lg: button.$border-radius-lg;
+.btn-custom {
+  background-color: button.$btn-bg-color;
+  color: button.$btn-text-color;
+  border: button.$btn-border-width solid button.$btn-border-color;
+  border-radius: $border-radius;
+  font-size: button.$btn-font-size;
+  font-weight: button.$btn-font-weight;
+  
+  &:hover {
+    background-color: button.$btn-hover-bg-color;
+    color: button.$btn-hover-text-color;
+    border-color: button.$btn-hover-border-color;
+  }
+  
+  &:focus {
+    box-shadow: button.$btn-focus-box-shadow;
+  }
+}
+
+// Anchors
+a {
+    color: anchor.$anchor-color;
+    text-decoration: anchor.$anchor-text-decoration;
+  
+    &:hover {
+      color: anchor.$anchor-hover-color;
+      text-decoration: anchor.$anchor-hover-text-decoration;
+    }
+}

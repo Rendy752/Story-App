@@ -4,3 +4,16 @@ $padding-y: 0.25rem;
 $border-radius: 0;
 $border-radius-sm: 0;
 $border-radius-lg: 0;
+
+$btn-bg-color: #007bff; 
+$btn-text-color: #ffffff; 
+$btn-border-width: 2px; 
+$btn-border-color: #007bff; 
+$btn-font-size: 1rem; 
+$btn-font-weight: 600; 
+
+$btn-hover-bg-color: darken($btn-bg-color, 10%); 
+$btn-hover-text-color: $btn-text-color;
+$btn-hover-border-color: darken($btn-border-color, 10%); 
+
+$btn-focus-box-shadow: 0 0 0 0.2rem rgba($btn-bg-color, .5); 
