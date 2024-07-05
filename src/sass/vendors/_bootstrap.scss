@@ -63,6 +63,22 @@
 // Menerapkan/override variables Bootstrap apa pun di sini
 $theme-colors: map.deep-merge($theme-colors, color.$theme-colors);
 
+html {
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+html::-webkit-scrollbar {
+    display: none;
+}
+
+// Body
+main {
+    background-color: color.$body-bg;
+    color: color.$body-color;
+    margin-top: -1.5rem !important;
+}
+
 // Buttons
 .btn-custom {
   background-color: button.$btn-bg-color;
@@ -71,6 +87,7 @@ $theme-colors: map.deep-merge($theme-colors, color.$theme-colors);
   border-radius: $border-radius;
   font-size: button.$btn-font-size;
   font-weight: button.$btn-font-weight;
+  padding: button.$btn-padding;
   
   &:hover {
     background-color: button.$btn-hover-bg-color;

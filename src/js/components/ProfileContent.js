@@ -10,7 +10,7 @@ class ProfileContent extends LitWithoutShadowDom {
 
   render() {
     return html`
-      <div class="container mt-5">
+      <div class="container py-5">
         <h1 class="mb-4 text-center">Story App Company Profile</h1>
         <div class="jumbotron">
           <h2>About Us</h2>
