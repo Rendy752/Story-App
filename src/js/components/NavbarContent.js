@@ -70,6 +70,11 @@ class NavbarContent extends LitWithoutShadowDom {
                   link="/story/add.html"
                   activeLink="${this.activeLink}"
                 ></nav-link>
+                <nav-link
+                  name="Profile"
+                  link="/profile.html"
+                  activeLink="${this.activeLink}"
+                ></nav-link>
               </ul>
             </div>
           </div>

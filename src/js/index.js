@@ -5,6 +5,7 @@ import '../sass/main.scss';
 // Import lit components
 import './components/NavbarContent';
 import './components/DashboardContent';
+import './components/ProfileContent';
 import './components/CarouselContent';
 import './components/FooterContent';
 import './components/NavLink';
@@ -13,10 +14,12 @@ import './components/StoryItem';
 
 import Dashboard from './pages/dashboard';
 import Add from './pages/story/add';
+import Profile from './pages/profile';
 
 const routes = {
   '/': Dashboard,
   '/story/add.html': Add,
+  '/profile.html': Profile,
 };
 
 const detectRoute = () => routes[window.location.pathname];

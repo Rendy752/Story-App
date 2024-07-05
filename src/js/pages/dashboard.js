@@ -1,6 +1,6 @@
 const Dashboard = {
   async init() {
-    document.querySelector('#mainContent').innerHTML =
+    document.querySelector('#dashboardContent').innerHTML =
       '<dashboard-content></dashboard-content>';
   },
 };

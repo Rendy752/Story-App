@@ -68,6 +68,13 @@ module.exports = {
       ...htmlWebpackPluginConfig,
     }),
 
+    new HtmlWebpackPlugin({
+      title: 'Profile',
+      filename: 'profile.html',
+      template: path.resolve(__dirname, 'src/views/profile.html'),
+      ...htmlWebpackPluginConfig,
+    }),
+
     new CopyWebpackPlugin({
       patterns: [
         {
