@@ -46,7 +46,7 @@ const Add = {
 
   _validateFormData(formData) {
     const formDataFiltered = Object.values(formData).filter(
-      (item) => item === '',
+      (item) => item === '' || item === undefined,
     );
 
     return formDataFiltered.length === 0;

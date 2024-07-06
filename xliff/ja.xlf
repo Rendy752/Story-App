@@ -94,6 +94,18 @@
   <source>Add Your Story</source>
   <target>あなたのストーリーを追加</target>
 </trans-unit>
+<trans-unit id="s1594bf1b97607f2b">
+  <source>Name field is required</source>
+  <target>名前欄は必須です</target>
+</trans-unit>
+<trans-unit id="sfabad57e72fa98b4">
+  <source>Description field is required</source>
+  <target>説明欄は必須です</target>
+</trans-unit>
+<trans-unit id="s53f840e351140536">
+  <source>Photo field is required</source>
+  <target>写真欄は必須です</target>
+</trans-unit>
 </body>
 </file>
 </xliff>

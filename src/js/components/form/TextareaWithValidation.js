@@ -33,6 +33,15 @@ class TextareaWithValidation extends LitWithoutShadowDom {
     }
   }
 
+  getLocalizedInvalidFeedbackMessage() {
+    switch (this.invalidFeedbackMessage) {
+      case 'Description field is required':
+        return msg('Description field is required');
+      default:
+        return nothing;
+    }
+  }
+
   _checkAvailabilityProperty() {
     if (!this.hasAttribute('invalidFeedbackMessage')) {
       throw new Error(
@@ -59,7 +68,9 @@ class TextareaWithValidation extends LitWithoutShadowDom {
         >
 
         ${this._validFeedbackTemplate()}
-        <div class="invalid-feedback">${this.invalidFeedbackMessage}</div>
+        <div class="invalid-feedback">
+          ${this.getLocalizedInvalidFeedbackMessage()}
+        </div>
       </div>
     `;
   }

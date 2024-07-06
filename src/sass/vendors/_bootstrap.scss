@@ -60,8 +60,6 @@
 // Tambahkan custom code di sini
 //
 
-$theme-colors: map.deep-merge($theme-colors, color.$theme-colors);
-
 html {
     overflow-x: hidden;
     scroll-behavior: smooth;

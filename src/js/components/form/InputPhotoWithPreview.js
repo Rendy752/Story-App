@@ -1,5 +1,6 @@
 import { html, nothing } from 'lit';
 import { LitWithoutShadowDom } from '../base/LitWithoutShadowDom';
+import { msg, updateWhenLocaleChanges } from '@lit/localize';
 
 class InputPhotoWithPreview extends LitWithoutShadowDom {
   static properties = {
@@ -15,10 +16,20 @@ class InputPhotoWithPreview extends LitWithoutShadowDom {
 
   constructor() {
     super();
+    updateWhenLocaleChanges(this);
 
     this.type = 'text';
     this.defaultPhoto = '';
     this.defaultPhotoAlt = '';
+  }
+
+  getLocalizedInvalidFeedbackMessage() {
+    switch (this.invalidFeedbackMessage) {
+      case 'Photo field is required':
+        return msg('Photo field is required');
+      default:
+        return nothing;
+    }
   }
 
   render() {
@@ -74,7 +85,9 @@ class InputPhotoWithPreview extends LitWithoutShadowDom {
     }
     if (this.invalidFeedbackMessage) {
       invalidFeedbackTemplate = html`
-        <div class="invalid-feedback">${this.invalidFeedbackMessage}</div>
+        <div class="invalid-feedback">
+          ${this.getLocalizedInvalidFeedbackMessage()}
+        </div>
       `;
     }
 

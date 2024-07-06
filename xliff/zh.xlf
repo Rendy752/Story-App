@@ -94,6 +94,18 @@
   <source>Add Your Story</source>
   <target>添加您的故事</target>
 </trans-unit>
+<trans-unit id="s1594bf1b97607f2b">
+  <source>Name field is required</source>
+  <target>姓名字段是必填的</target>
+</trans-unit>
+<trans-unit id="sfabad57e72fa98b4">
+  <source>Description field is required</source>
+  <target>描述字段是必填的</target>
+</trans-unit>
+<trans-unit id="s53f840e351140536">
+  <source>Photo field is required</source>
+  <target>照片字段是必填的</target>
+</trans-unit>
 </body>
 </file>
 </xliff>

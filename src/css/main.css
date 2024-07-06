@@ -19448,6 +19448,21 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+html {
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+html::-webkit-scrollbar {
+  display: none;
+}
+
+main {
+  background-color: #e7eaed;
+  color: #333;
+  margin-top: -1.5rem !important;
+}
+
 .btn-custom {
   background-color: #007bff;
   color: #ffffff;

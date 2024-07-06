@@ -13,8 +13,8 @@ export const setLocaleFromUrl = async () => {
   const url = new URL(window.location.href);
   const locale = url.searchParams.get('lang') || sourceLocale;
 
-  console.log('setLocaleFromUrl', locale);
-  console.log('getLocale', getLocale());
+  // console.log('setLocaleFromUrl', locale);
+  // console.log('getLocale', getLocale());
   await setLocale(locale);
 };
 

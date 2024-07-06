@@ -11,6 +11,7 @@
     export const templates = {
       's020fa68373e629a7': `Profil Perusahaan Story App`,
 's1354151b102636dc': `Ikuti cerita terbaru.`,
+'s1594bf1b97607f2b': `Kolom Nama harus diisi`,
 's1f30f2eaf1e38fb9': `Tambah Cerita`,
 's306974db215e1942': `Buat Cerita Anda`,
 's3c8b1782bb615bb1': `Nilai-Nilai Kami`,
@@ -18,6 +19,7 @@
 's404550cd396ebffd': `Jelajahi Cerita`,
 's477b606f47008777': `Memberikan platform yang dapat diakses bagi para pencerita untuk berbagi karya mereka dan bagi pembaca untuk menemukan cerita baru yang menginspirasi, menghibur, dan memberikan informasi.`,
 's4a0f1024d608d7ef': `Integritas dan Hormat`,
+'s53f840e351140536': `Kolom Foto harus diisi`,
 's63d894b1ddb06289': `Deksripsi`,
 's77f1479aaab576c4': `Story App adalah platform yang didedikasikan untuk menghubungkan para pencerita dan pembaca. Kami percaya pada kekuatan cerita untuk menghubungkan orang, menginspirasi perubahan, dan membawa kebahagiaan.`,
 's79588ab7cdf00cf5': `Kreativitas dan Inovasi`,
@@ -32,5 +34,6 @@
 'see84ee5332435f6d': `Komunitas dan Koneksi`,
 'sef49aec68fd1dc66': `Nama`,
 'sf1bc83d2509bafcf': `Telepon`,
+'sfabad57e72fa98b4': `Kolom Deskripsi harus diisi`,
     };
   

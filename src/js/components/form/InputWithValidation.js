@@ -33,6 +33,15 @@ class InputWithValidation extends LitWithoutShadowDom {
     }
   }
 
+  getLocalizedInvalidFeedbackMessage() {
+    switch (this.invalidFeedbackMessage) {
+      case 'Name field is required':
+        return msg('Name field is required');
+      default:
+        return nothing;
+    }
+  }
+
   _checkAvailabilityProperty() {
     if (!this.hasAttribute('invalidFeedbackMessage')) {
       throw new Error(
@@ -58,7 +67,9 @@ class InputWithValidation extends LitWithoutShadowDom {
         >
 
         ${this._validFeedbackTemplate()}
-        <div class="invalid-feedback">${this.invalidFeedbackMessage}</div>
+        <div class="invalid-feedback">
+          ${this.getLocalizedInvalidFeedbackMessage()}
+        </div>
       </div>
     `;
   }
