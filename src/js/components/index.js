@@ -8,6 +8,7 @@ import './FooterContent';
 import './NavLink';
 import './StoryContent';
 import './StoryItem';
+import './AddStoryHeader';
 
 // Import lit form components
 import './form/InputWithValidation';

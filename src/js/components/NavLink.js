@@ -1,5 +1,6 @@
 import { html } from 'lit';
 import { LitWithoutShadowDom } from './base/LitWithoutShadowDom';
+import { msg, updateWhenLocaleChanges } from '@lit/localize';
 
 class NavLink extends LitWithoutShadowDom {
   static properties = {
@@ -11,6 +12,20 @@ class NavLink extends LitWithoutShadowDom {
   constructor() {
     super();
     this._checkAvailabilityProperty();
+    updateWhenLocaleChanges(this);
+  }
+
+  getLocalizedNavLinkName() {
+    switch (this.name) {
+      case 'Dashboard':
+        return msg('Dashboard');
+      case 'Add Story':
+        return msg('Add Story');
+      case 'Profile':
+        return msg('Profile');
+      default:
+        return nothing;
+    }
   }
 
   _checkAvailabilityProperty() {
@@ -34,8 +49,8 @@ class NavLink extends LitWithoutShadowDom {
           class="nav-link ${this.activeLink === this.link && 'active'}"
           aria-current="page"
           href="${this.link}"
-          >${this.name}</a
-        >
+          >${this.getLocalizedNavLinkName()}
+        </a>
       </li>
     `;
   }

@@ -70,6 +70,30 @@
   <source>Follow Us</source>
   <target>Ikuti Kami</target>
 </trans-unit>
+<trans-unit id="s404550cd396ebffd">
+  <source>Explore Stories</source>
+  <target>Jelajahi Cerita</target>
+</trans-unit>
+<trans-unit id="s1f30f2eaf1e38fb9">
+  <source>Add Story</source>
+  <target>Tambah Cerita</target>
+</trans-unit>
+<trans-unit id="sef49aec68fd1dc66">
+  <source>Name</source>
+  <target>Nama</target>
+</trans-unit>
+<trans-unit id="sb061ff5a347a296e">
+  <source>Profile</source>
+  <target>Profil</target>
+</trans-unit>
+<trans-unit id="s63d894b1ddb06289">
+  <source>Description</source>
+  <target>Deksripsi</target>
+</trans-unit>
+<trans-unit id="s306974db215e1942">
+  <source>Add Your Story</source>
+  <target>Buat Cerita Anda</target>
+</trans-unit>
 </body>
 </file>
 </xliff>

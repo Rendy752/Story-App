@@ -12,14 +12,14 @@ class DashboardBody extends LitWithoutShadowDom {
     return html`
       <div class="d-flex justify-content-between align-items-center">
         <div>
-          <h3>Explore Stories</h3>
+          <h3>${msg('Explore Stories')}</h3>
           <h5 class="text-muted">${msg(`Keep up with the latest stories.`)}</h5>
         </div>
         <button
           class="btn-custom"
           onclick="window.location.href='/story/add.html'"
         >
-          Add Story
+          ${msg('Add Story')}
         </button>
       </div>
       <div class="row mt-3">

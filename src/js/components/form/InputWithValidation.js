@@ -1,5 +1,6 @@
 import { html, nothing } from 'lit';
 import { LitWithoutShadowDom } from '../base/LitWithoutShadowDom';
+import { msg, updateWhenLocaleChanges } from '@lit/localize';
 
 class InputWithValidation extends LitWithoutShadowDom {
   static properties = {
@@ -17,9 +18,19 @@ class InputWithValidation extends LitWithoutShadowDom {
   constructor() {
     super();
     this._checkAvailabilityProperty();
+    updateWhenLocaleChanges(this);
 
     this.type = 'text';
     this.required = false;
+  }
+
+  getLocalizedPlaceholder() {
+    switch (this.placeholder) {
+      case 'Name':
+        return msg('Name');
+      default:
+        return nothing;
+    }
   }
 
   _checkAvailabilityProperty() {
@@ -39,11 +50,11 @@ class InputWithValidation extends LitWithoutShadowDom {
           type=${this.type}
           value=${this.value || nothing}
           ?required=${this.required}
-          placeholder=${this.placeholder || nothing}
+          placeholder=${this.getLocalizedPlaceholder() || nothing}
           @input=${(e) => (this.value = e.target.value)}
         />
         <label for="${this.inputId}" class="form-label"
-          >${this.placeholder}</label
+          >${this.getLocalizedPlaceholder()}</label
         >
 
         ${this._validFeedbackTemplate()}
