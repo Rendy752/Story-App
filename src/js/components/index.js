@@ -13,5 +13,4 @@ import './StoryItem';
 import './form/InputWithValidation';
 import './form/TextareaWithValidation';
 import './form/InputPhotoWithPreview';
-
-// import './form/LocalePicker';
+import './form/LocalePicker';

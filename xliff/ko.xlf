@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+<file target-language="ko" source-language="en" original="lit-localize-inputs" datatype="plaintext">
+<body>
+<trans-unit id="s7fee95b66225e1fb">
+  <source>Dashboard</source>
+  <target>대시보드</target>
+</trans-unit>
+<trans-unit id="s1354151b102636dc">
+  <source>Keep up with the latest stories.</source>
+  <target>최신 이야기를 계속 보세요.</target>
+</trans-unit>
+<trans-unit id="s020fa68373e629a7">
+  <source>Story App Company Profile</source>
+  <target>Story App 회사 소개</target>
+</trans-unit>
+<trans-unit id="se93cb0c892820b0a">
+  <source>About Us</source>
+  <target>회사 소개</target>
+</trans-unit>
+<trans-unit id="s77f1479aaab576c4">
+  <source>Story App is a platform dedicated to bringing storytellers and readers together. We believe in the power of stories to connect people, inspire change, and bring joy.</source>
+  <target>Story App 은 이야기꾼과 독자를 연결하는 데 전념하는 플랫폼입니다. 우리는 이야기가 사람들을 연결하고 변화를 일으키며 기쁨을 가져다 줄 수 있는 힘을 믿습니다.</target>
+</trans-unit>
+<trans-unit id="se8f5ec44c4c6a98b">
+  <source>Our Mission</source>
+  <target>우리의 미션</target>
+</trans-unit>
+<trans-unit id="s477b606f47008777">
+  <source>To provide an accessible platform for storytellers to share their work and for readers to discover new stories that inspire, entertain, and inform.</source>
+  <target>이야기꾼이 자신의 작품을 공유하고 독자가 영감을 주고 즐기며 정보를 얻을 수 있는 새로운 이야기를 발견할 수 있는 접근 가능한 플랫폼을 제공하는 것</target>
+</trans-unit>
+<trans-unit id="s808e80e4501f33ff">
+  <source>Our Vision</source>
+  <target>우리의 비전</target>
+</trans-unit>
+<trans-unit id="s9f9312ed955b23cb">
+  <source>To be the world's leading storytelling platform, fostering a global community of storytellers and readers.</source>
+  <target>세계를 선도하는 이야기 플랫폼이 되어 이야기꾼과 독자의 글로벌 커뮤니티를 육성하는 것</target>
+</trans-unit>
+<trans-unit id="s3c8b1782bb615bb1">
+  <source>Our Values</source>
+  <target>우리의 가치</target>
+</trans-unit>
+<trans-unit id="s4a0f1024d608d7ef">
+  <source>Integrity and Respect</source>
+  <target>정직과 존중</target>
+</trans-unit>
+<trans-unit id="s79588ab7cdf00cf5">
+  <source>Creativity and Innovation</source>
+  <target>창의성과 혁신</target>
+</trans-unit>
+<trans-unit id="see84ee5332435f6d">
+  <source>Community and Connection</source>
+  <target>커뮤니티와 연결</target>
+</trans-unit>
+<trans-unit id="s3f80bb1225cafc5b">
+  <source>Diversity and Inclusion</source>
+  <target>다양성과 포용</target>
+</trans-unit>
+<trans-unit id="sd1cae0dcd2945c35">
+  <source>Contact Us</source>
+  <target>연락처</target>
+</trans-unit>
+<trans-unit id="sf1bc83d2509bafcf">
+  <source>Phone</source>
+  <target>전화</target>
+</trans-unit>
+<trans-unit id="scb056ed6dbbd6244">
+  <source>Follow Us</source>
+  <target>팔로우하기</target>
+</trans-unit>
+</body>
+</file>
+</xliff>

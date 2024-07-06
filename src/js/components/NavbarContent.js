@@ -60,6 +60,7 @@ class NavbarContent extends LitWithoutShadowDom {
               <ul
                 class="navbar-nav justify-content-end flex-grow-1 pe-3 d-flex gap-3"
               >
+                <locale-picker></locale-picker>
                 <nav-link
                   name="Dashboard"
                   link="/"

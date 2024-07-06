@@ -16,7 +16,10 @@ class LocalePicker extends LitWithoutShadowDom {
 
   render() {
     return html`
-      <select class="form-select w-auto m-auto" @change=${this._localeChanged}>
+      <select
+        class="form-select w-auto m-auto fs-5"
+        @change=${this._localeChanged}
+      >
         ${allLocales.map((locale) => {
           return html`
             <option value=${locale} ?selected=${locale === getLocale()}>

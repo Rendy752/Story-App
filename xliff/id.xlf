@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+<file target-language="id" source-language="en" original="lit-localize-inputs" datatype="plaintext">
+<body>
+<trans-unit id="s7fee95b66225e1fb">
+  <source>Dashboard</source>
+  <target>Dasbor</target>
+</trans-unit>
+<trans-unit id="s1354151b102636dc">
+  <source>Keep up with the latest stories.</source>
+  <target>Ikuti cerita terbaru.</target>
+</trans-unit>
+<trans-unit id="s020fa68373e629a7">
+  <source>Story App Company Profile</source>
+  <target>Profil Perusahaan Story App</target>
+</trans-unit>
+<trans-unit id="se93cb0c892820b0a">
+  <source>About Us</source>
+  <target>Tentang Kami</target>
+</trans-unit>
+<trans-unit id="s77f1479aaab576c4">
+  <source>Story App is a platform dedicated to bringing storytellers and readers together. We believe in the power of stories to connect people, inspire change, and bring joy.</source>
+  <target>Story App adalah platform yang didedikasikan untuk menghubungkan para pencerita dan pembaca. Kami percaya pada kekuatan cerita untuk menghubungkan orang, menginspirasi perubahan, dan membawa kebahagiaan.</target>
+</trans-unit>
+<trans-unit id="se8f5ec44c4c6a98b">
+  <source>Our Mission</source>
+  <target>Misi Kami</target>
+</trans-unit>
+<trans-unit id="s477b606f47008777">
+  <source>To provide an accessible platform for storytellers to share their work and for readers to discover new stories that inspire, entertain, and inform.</source>
+  <target>Memberikan platform yang dapat diakses bagi para pencerita untuk berbagi karya mereka dan bagi pembaca untuk menemukan cerita baru yang menginspirasi, menghibur, dan memberikan informasi.</target>
+</trans-unit>
+<trans-unit id="s808e80e4501f33ff">
+  <source>Our Vision</source>
+  <target>Visi Kami</target>
+</trans-unit>
+<trans-unit id="s9f9312ed955b23cb">
+  <source>To be the world's leading storytelling platform, fostering a global community of storytellers and readers.</source>
+  <target>Menjadi platform penceritaan terkemuka di dunia, yang memupuk komunitas global para pencerita dan pembaca.</target>
+</trans-unit>
+<trans-unit id="s3c8b1782bb615bb1">
+  <source>Our Values</source>
+  <target>Nilai-Nilai Kami</target>
+</trans-unit>
+<trans-unit id="s4a0f1024d608d7ef">
+  <source>Integrity and Respect</source>
+  <target>Integritas dan Hormat</target>
+</trans-unit>
+<trans-unit id="s79588ab7cdf00cf5">
+  <source>Creativity and Innovation</source>
+  <target>Kreativitas dan Inovasi</target>
+</trans-unit>
+<trans-unit id="see84ee5332435f6d">
+  <source>Community and Connection</source>
+  <target>Komunitas dan Koneksi</target>
+</trans-unit>
+<trans-unit id="s3f80bb1225cafc5b">
+  <source>Diversity and Inclusion</source>
+  <target>Keragaman dan Inklusi</target>
+</trans-unit>
+<trans-unit id="sd1cae0dcd2945c35">
+  <source>Contact Us</source>
+  <target>Hubungi Kami</target>
+</trans-unit>
+<trans-unit id="sf1bc83d2509bafcf">
+  <source>Phone</source>
+  <target>Telepon</target>
+</trans-unit>
+<trans-unit id="scb056ed6dbbd6244">
+  <source>Follow Us</source>
+  <target>Ikuti Kami</target>
+</trans-unit>
+</body>
+</file>
+</xliff>
