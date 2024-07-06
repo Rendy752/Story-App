@@ -3,14 +3,7 @@ import 'bootstrap';
 import '../sass/main.scss';
 
 // Import lit components
-import './components/NavbarContent';
-import './components/DashboardContent';
-import './components/ProfileContent';
-import './components/CarouselContent';
-import './components/FooterContent';
-import './components/NavLink';
-import './components/StoryContent';
-import './components/StoryItem';
+import './components/index';
 
 import Dashboard from './pages/dashboard';
 import Add from './pages/story/add';

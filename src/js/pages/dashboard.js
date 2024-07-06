@@ -1,8 +1,5 @@
 const Dashboard = {
-  async init() {
-    document.querySelector('#dashboardContent').innerHTML =
-      '<dashboard-content></dashboard-content>';
-  },
+  async init() {},
 };
 
 export default Dashboard;

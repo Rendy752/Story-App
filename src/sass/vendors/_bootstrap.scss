@@ -60,7 +60,6 @@
 // Tambahkan custom code di sini
 //
 
-// Menerapkan/override variables Bootstrap apa pun di sini
 $theme-colors: map.deep-merge($theme-colors, color.$theme-colors);
 
 html {
