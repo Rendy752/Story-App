@@ -3,6 +3,7 @@ import { LitWithoutShadowDom } from '../base/LitWithoutShadowDom';
 
 class InputWithValidation extends LitWithoutShadowDom {
   static properties = {
+    placeholder: { type: String, reflect: true },
     type: { type: String, reflect: true },
     value: { type: String, reflect: true },
     inputId: { type: String, reflect: true },
@@ -31,17 +32,23 @@ class InputWithValidation extends LitWithoutShadowDom {
 
   render() {
     return html`
-      <input
-        id=${this.inputId || nothing}
-        class="form-control"
-        type=${this.type}
-        value=${this.value || nothing}
-        ?required=${this.required}
-        @input=${(e) => (this.value = e.target.value)}
-      />
+      <div class="form-floating">
+        <input
+          id=${this.inputId || nothing}
+          class="form-control shadow-sm"
+          type=${this.type}
+          value=${this.value || nothing}
+          ?required=${this.required}
+          placeholder=${this.placeholder || nothing}
+          @input=${(e) => (this.value = e.target.value)}
+        />
+        <label for="${this.inputId}" class="form-label"
+          >${this.placeholder}</label
+        >
 
-      ${this._validFeedbackTemplate()}
-      <div class="invalid-feedback">${this.invalidFeedbackMessage}</div>
+        ${this._validFeedbackTemplate()}
+        <div class="invalid-feedback">${this.invalidFeedbackMessage}</div>
+      </div>
     `;
   }
 

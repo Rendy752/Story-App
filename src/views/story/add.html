@@ -15,73 +15,29 @@
         <div class="container py-5">
           <h3 class="mb-3">Add Story</h3>
 
-          <form class="row g-3" id="addRecordForm" novalidate>
+          <form class="row g-3 mt-3" id="addStoryForm" novalidate>
             <div class="col-12 col-md-6">
-              <label for="validationCustomRecordName" class="form-label"
-                >Nama</label
-              >
+              <input-photo-with-preview
+                inputId="validationCustomPhoto"
+                invalidFeedbackMessage="Photo field is required"
+                required
+              ></input-photo-with-preview>
+            </div>
+            <div class="col-12 col-md-6">
               <input-with-validation
+                placeholder="Name"
                 type="text"
-                inputId="validationCustomRecordName"
-                invalidFeedbackMessage="Wajib diisi"
+                inputId="validationCustomName"
+                invalidFeedbackMessage="Name field is required"
                 required
               ></input-with-validation>
-              <div class="invalid-feedback">Wajib diisi</div>
-            </div>
-            <div class="col-12 col-md-6">
-              <label for="validationCustomAmount" class="form-label"
-                >Jumlah Uang</label
-              >
-              <input-group-with-validation
-                type="number"
-                inputGroupText="Rp"
-                inputId="validationCustomAmount"
-                invalidFeedbackMessage="Wajib diisi"
-                validation
-                required
-              ></input-group-with-validation>
-            </div>
-            <div class="col-12 col-md-6">
-              <label for="validationCustomDate" class="form-label"
-                >Tanggal</label
-              >
-              <input-group-with-validation
-                type="datetime-local"
-                inputId="validationCustomDate"
-                inputGroupIcon="bi-calendar-event"
-                invalidFeedbackMessage="Wajib diisi"
-                validation
-                required
-              ></input-group-with-validation>
-            </div>
-            <div class="col-12 col-md-6">
-              <label for="validationCustomNotes" class="form-label"
-                >Catatan</label
-              >
+
               <textarea-with-validation
-                inputId="validationCustomNotes"
-                invalidFeedbackMessage="Wajib diisi"
+                placeholder="Description"
+                inputId="validationCustomDescription"
+                invalidFeedbackMessage="Description field is required"
                 required
               ></textarea-with-validation>
-            </div>
-            <div class="col-12 col-md-6">
-              <label for="validationCustomEvidence" class="form-label"
-                >Bukti tagihan</label
-              >
-              <input-image-with-preview
-                inputId="validationCustomEvidence"
-                invalidFeedbackMessage="Wajib diisi"
-                required
-              ></input-image-with-preview>
-            </div>
-            <div class="col-12 col-md-6">
-              <div class="form-label">Tipe</div>
-              <input-radio-with-validation
-                id="inputRadioTransactionTypeAdd"
-                invalidFeedbackMessage="Wajib diisi"
-                name="recordType"
-                required
-              ></input-radio-with-validation>
             </div>
             <div class="col-12 text-end">
               <button class="btn btn-primary" type="submit">Submit</button>

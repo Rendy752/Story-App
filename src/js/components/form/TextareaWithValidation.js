@@ -3,6 +3,7 @@ import { LitWithoutShadowDom } from '../base/LitWithoutShadowDom';
 
 class TextareaWithValidation extends LitWithoutShadowDom {
   static properties = {
+    placeholder: { type: String, reflect: true },
     value: { type: String, reflect: true },
     rows: { type: Number, reflect: true },
     inputId: { type: String, reflect: true },
@@ -31,17 +32,24 @@ class TextareaWithValidation extends LitWithoutShadowDom {
 
   render() {
     return html`
-      <textarea
-        id=${this.inputId || nothing}
-        class="form-control"
-        rows=${this.rows || nothing}
-        value=${this.value || nothing}
-        ?required=${this.required}
-        @input=${(e) => (this.value = e.target.value)}
-      ></textarea>
+      <div class="form-floating mt-3">
+        <textarea
+          id=${this.inputId || nothing}
+          class="form-control shadow-sm"
+          style="height: 300px;"
+          rows=${this.rows || nothing}
+          value=${this.value || nothing}
+          ?required=${this.required}
+          placeholder=${this.placeholder || nothing}
+          @input=${(e) => (this.value = e.target.value)}
+        ></textarea>
+        <label for="${this.inputId}" class="form-label"
+          >${this.placeholder}</label
+        >
 
-      ${this._validFeedbackTemplate()}
-      <div class="invalid-feedback">${this.invalidFeedbackMessage}</div>
+        ${this._validFeedbackTemplate()}
+        <div class="invalid-feedback">${this.invalidFeedbackMessage}</div>
+      </div>
     `;
   }
 
