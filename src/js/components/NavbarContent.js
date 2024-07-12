@@ -1,12 +1,26 @@
 import { html } from 'lit';
 import { LitWithoutShadowDom } from './base/LitWithoutShadowDom';
 import { msg, updateWhenLocaleChanges } from '@lit/localize';
+import { Modal } from 'bootstrap';
 
 class NavbarContent extends LitWithoutShadowDom {
   static properties = {
     brandName: { type: String, reflect: true },
     activeLink: { type: String, reflect: true },
   };
+
+  firstUpdated() {
+    this.querySelector('.btn-login').addEventListener('click', () => {
+      const loginModalElement = this.querySelector('#loginModal');
+      if (loginModalElement) {
+        const loginModal = new Modal(loginModalElement);
+
+        loginModal.show();
+      } else {
+        console.error('Login modal element not found');
+      }
+    });
+  }
 
   constructor() {
     super();
@@ -76,11 +90,16 @@ class NavbarContent extends LitWithoutShadowDom {
                   link="/profile.html"
                   activeLink="${this.activeLink}"
                 ></nav-link>
+                <button type="button" class="btn btn-info btn-round btn-login">
+                  ${msg('Login')}
+                </button>
               </ul>
             </div>
           </div>
         </div>
       </nav>
+      <login-modal></login-modal>
+      <register-modal></register-modal>
     `;
   }
 }

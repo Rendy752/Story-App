@@ -15,3 +15,7 @@ import './form/InputWithValidation';
 import './form/TextareaWithValidation';
 import './form/InputPhotoWithPreview';
 import './form/LocalePicker';
+
+// Import lit auth components
+import './auth/LoginModal';
+import './auth/RegisterModal';

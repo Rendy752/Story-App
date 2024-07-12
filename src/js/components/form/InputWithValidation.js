@@ -28,6 +28,10 @@ class InputWithValidation extends LitWithoutShadowDom {
     switch (this.placeholder) {
       case 'Name':
         return msg('Name');
+      case 'Email':
+        return msg('Email');
+      case 'Password':
+        return msg('Password');
       default:
         return nothing;
     }
