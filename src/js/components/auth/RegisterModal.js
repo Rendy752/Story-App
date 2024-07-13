@@ -10,6 +10,19 @@ class RegisterModal extends LitWithoutShadowDom {
   }
 
   firstUpdated() {
+    const registerForm = this.querySelector('#registerForm');
+    registerForm.addEventListener(
+      'submit',
+      async (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+
+        registerForm.classList.add('was-validated');
+        await this._getRegistered();
+      },
+      false,
+    );
+
     this.querySelector('.btn-login').addEventListener('click', () => {
       const loginModalElement = document.querySelector('#loginModal');
       const registerModalElement = document.querySelector('#registerModal');
@@ -24,6 +37,40 @@ class RegisterModal extends LitWithoutShadowDom {
         console.error('Register modal element not found');
       }
     });
+  }
+
+  async _getRegistered() {
+    const formData = this._getFormData();
+
+    if (this._validateFormData({ ...formData })) {
+      console.log('formData');
+      console.log(formData);
+    }
+  }
+
+  _getFormData() {
+    const name = this.querySelector('#validationCustomName');
+    const email = this.querySelector('#validationCustomEmail');
+    const password = this.querySelector('#validationCustomPassword');
+
+    return {
+      name: name.value,
+      email: email.value,
+      password: password.value,
+    };
+  }
+
+  _validateFormData(formData) {
+    const isNameValid = formData.name.length > 0;
+    const isEmailValid = /^[^\s@]+@[^\s@]+(\.[^\s@]+)?$/.test(formData.email);
+    const isPasswordValid = formData.password.length >= 8;
+
+    // console.log(isNameValid, isEmailValid, isPasswordValid);
+    return isNameValid && isEmailValid && isPasswordValid;
+  }
+
+  _goToLoginPage() {
+    window.location.href = '/';
   }
 
   render() {
@@ -53,21 +100,21 @@ class RegisterModal extends LitWithoutShadowDom {
                   ></input-with-validation>
                   <input-with-validation
                     placeholder="Email"
-                    type="text"
+                    type="email"
                     inputId="validationCustomEmail"
-                    invalidFeedbackMessage="Email field is required"
+                    invalidFeedbackMessage="Email field must be a valid email"
                     required
                   ></input-with-validation>
                   <input-with-validation
                     placeholder="Password"
-                    type="text"
+                    type="password"
                     inputId="validationCustomPassword"
-                    invalidFeedbackMessage="Password field is required"
+                    invalidFeedbackMessage="Password field must be at least 8 characters"
                     required
                   ></input-with-validation>
 
                   <button
-                    type="button"
+                    type="submit"
                     class="btn btn-info btn-block btn-round"
                   >
                     ${msg('Register')}

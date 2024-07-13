@@ -41,6 +41,10 @@ class InputWithValidation extends LitWithoutShadowDom {
     switch (this.invalidFeedbackMessage) {
       case 'Name field is required':
         return msg('Name field is required');
+      case 'Email field must be a valid email':
+        return msg('Email field must be a valid email');
+      case 'Password field must be at least 8 characters':
+        return msg('Password field must be at least 8 characters');
       default:
         return nothing;
     }
@@ -62,6 +66,7 @@ class InputWithValidation extends LitWithoutShadowDom {
           class="form-control shadow-sm"
           type=${this.type}
           value=${this.value || nothing}
+          minlength="${this.type === 'password' ? 8 : 1}"
           ?required=${this.required}
           placeholder=${this.getLocalizedPlaceholder() || nothing}
           @input=${(e) => (this.value = e.target.value)}
