@@ -9,6 +9,8 @@ import Dashboard from './pages/dashboard';
 import Add from './pages/story/add';
 import Profile from './pages/profile';
 
+import CheckUserAuth from './pages/auth/check-user-auth';
+
 const routes = {
   '/': Dashboard,
   '/story/add.html': Add,
@@ -30,6 +32,11 @@ const initPages = () => {
 };
 
 window.addEventListener('DOMContentLoaded', async () => {
+  CheckUserAuth.checkLoginState(async () => {
+    const route = detectRoute();
+    await route.init();
+  });
+
   initPages();
 
   const route = detectRoute();

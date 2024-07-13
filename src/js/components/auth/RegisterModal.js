@@ -2,6 +2,7 @@ import { html } from 'lit';
 import { LitWithoutShadowDom } from '../base/LitWithoutShadowDom';
 import { msg, updateWhenLocaleChanges } from '@lit/localize';
 import { Modal } from 'bootstrap';
+import Auth from '../../network/auth';
 
 class RegisterModal extends LitWithoutShadowDom {
   constructor() {
@@ -24,27 +25,46 @@ class RegisterModal extends LitWithoutShadowDom {
     );
 
     this.querySelector('.btn-login').addEventListener('click', () => {
-      const loginModalElement = document.querySelector('#loginModal');
-      const registerModalElement = document.querySelector('#registerModal');
-      if (loginModalElement && registerModalElement) {
-        const loginModal = new Modal(loginModalElement);
-
-        registerModalElement.classList.remove('show');
-        registerModalElement.style.display = 'none';
-        document.querySelector('.modal-backdrop').remove();
-        loginModal.show();
-      } else {
-        console.error('Register modal element not found');
-      }
+      this._showLoginModalAndHideRegisterModal();
     });
+  }
+
+  _showLoginModalAndHideRegisterModal() {
+    const loginModalElement = document.querySelector('#loginModal');
+    const registerModalElement = document.querySelector('#registerModal');
+    if (loginModalElement && registerModalElement) {
+      const loginModal = new Modal(loginModalElement);
+
+      registerModalElement.classList.remove('show');
+      registerModalElement.style.display = 'none';
+      document.querySelector('.modal-backdrop').remove();
+      loginModal.show();
+    } else {
+      console.error('Register modal element not found');
+    }
   }
 
   async _getRegistered() {
     const formData = this._getFormData();
 
     if (this._validateFormData({ ...formData })) {
-      console.log('formData');
       console.log(formData);
+
+      try {
+        const response = await Auth.register({
+          email: formData.email,
+          password: formData.password,
+        });
+        await Auth.updateProfile(response.user, {
+          displayName: formData.name,
+        });
+        window.alert('Registered a new user');
+
+        this._showLoginModalAndHideRegisterModal();
+      } catch (error) {
+        window.alert('Register failed, please try again');
+        console.error(error);
+      }
     }
   }
 
@@ -67,10 +87,6 @@ class RegisterModal extends LitWithoutShadowDom {
 
     // console.log(isNameValid, isEmailValid, isPasswordValid);
     return isNameValid && isEmailValid && isPasswordValid;
-  }
-
-  _goToLoginPage() {
-    window.location.href = '/';
   }
 
   render() {

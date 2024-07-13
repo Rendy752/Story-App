@@ -2,6 +2,8 @@ import { html } from 'lit';
 import { LitWithoutShadowDom } from './base/LitWithoutShadowDom';
 import { msg, updateWhenLocaleChanges } from '@lit/localize';
 import { Modal } from 'bootstrap';
+import Auth from '../network/auth';
+import CheckUserAuth from '../pages/auth/check-user-auth';
 
 class NavbarContent extends LitWithoutShadowDom {
   static properties = {
@@ -72,7 +74,7 @@ class NavbarContent extends LitWithoutShadowDom {
             </div>
             <div class="offcanvas-body bg-dark">
               <ul
-                class="navbar-nav justify-content-end flex-grow-1 pe-3 d-flex gap-3"
+                class="navbar-nav justify-content-end flex-grow-1 pe-3 d-flex gap-3 align-items-center"
               >
                 <locale-picker></locale-picker>
                 <nav-link
@@ -90,9 +92,27 @@ class NavbarContent extends LitWithoutShadowDom {
                   link="/profile.html"
                   activeLink="${this.activeLink}"
                 ></nav-link>
-                <button type="button" class="btn btn-info btn-round btn-login">
-                  ${msg('Login')}
-                </button>
+                <div id="authContainer" class="d-flex gap-3 align-items-center">
+                  <button
+                    id="loginBtn"
+                    type="button"
+                    class="btn btn-info btn-round btn-login d-none"
+                  >
+                    ${msg('Login')}
+                  </button>
+                  <div
+                    id="userLoggedMenu"
+                    class="d-none text-white fw-bold"
+                  ></div>
+                  <button
+                    id="logoutBtn"
+                    type="button"
+                    class="btn btn-info btn-round d-none"
+                    @click=${this._userLogOut}
+                  >
+                    ${msg('Logout')}
+                  </button>
+                </div>
               </ul>
             </div>
           </div>
@@ -101,6 +121,18 @@ class NavbarContent extends LitWithoutShadowDom {
       <login-modal></login-modal>
       <register-modal></register-modal>
     `;
+  }
+
+  async _userLogOut(event) {
+    event.preventDefault();
+
+    try {
+      await Auth.logout();
+      window.alert('Successfully logged out');
+      CheckUserAuth.checkLoginState();
+    } catch (error) {
+      console.error(error);
+    }
   }
 }
 

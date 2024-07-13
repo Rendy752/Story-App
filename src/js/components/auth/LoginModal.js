@@ -2,6 +2,9 @@ import { html } from 'lit';
 import { LitWithoutShadowDom } from '../base/LitWithoutShadowDom';
 import { msg, updateWhenLocaleChanges } from '@lit/localize';
 import { Modal } from 'bootstrap';
+import Config from '../../config/config';
+import Utils from '../../utils/utils';
+import Auth from '../../network/auth';
 
 class LoginModal extends LitWithoutShadowDom {
   constructor() {
@@ -44,8 +47,26 @@ class LoginModal extends LitWithoutShadowDom {
     const formData = this._getFormData();
 
     if (this._validateFormData({ ...formData })) {
-      console.log('formData');
       console.log(formData);
+
+      try {
+        const response = await Auth.login({
+          email: formData.email,
+          password: formData.password,
+        });
+        Utils.setUserToken(Config.USER_TOKEN_KEY, response.user.accessToken);
+        window.alert('Login success');
+        const loginModalElement = this.querySelector('#loginModal');
+
+        if (loginModalElement) {
+          loginModalElement.classList.remove('show');
+          loginModalElement.style.display = 'none';
+          document.querySelector('.modal-backdrop').remove();
+        }
+      } catch (error) {
+        window.alert('Login failed, please try again');
+        console.error(error);
+      }
     }
   }
 
@@ -65,10 +86,6 @@ class LoginModal extends LitWithoutShadowDom {
 
     // console.log(isEmailValid, isPasswordValid);
     return isEmailValid && isPasswordValid;
-  }
-
-  _goToDashboardPage() {
-    window.location.href = '/';
   }
 
   render() {
