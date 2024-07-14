@@ -106,6 +106,58 @@
   <source>Photo field is required</source>
   <target>写真欄は必須です</target>
 </trans-unit>
+<trans-unit id="sc8da3cc71de63832">
+  <source>Login</source>
+  <target>ログイン</target>
+</trans-unit>
+<trans-unit id="s67749057edb2586b">
+  <source>Logout</source>
+  <target>ログアウト</target>
+</trans-unit>
+<trans-unit id="s9547046b6b89f296">
+  <source>Please login to see the stories</source>
+  <target>ストーリーを見るにはログインしてください</target>
+</trans-unit>
+<trans-unit id="sab64f55b644f4028">
+  <source>There is no story available</source>
+  <target>利用可能なストーリーはありません</target>
+</trans-unit>
+<trans-unit id="sd1f44f1a8bc20e67">
+  <source>Email</source>
+  <target>メール</target>
+</trans-unit>
+<trans-unit id="sf6e1665c7022a1f8">
+  <source>Password</source>
+  <target>パスワード</target>
+</trans-unit>
+<trans-unit id="s736ea3fbaecab734">
+  <source>Email field must be a valid email</source>
+  <target>メール欄は有効なメールアドレスである必要があります</target>
+</trans-unit>
+<trans-unit id="sd821a681d42add6a">
+  <source>Password field must be at least 8 characters</source>
+  <target>パスワード欄は少なくとも8文字である必要があります</target>
+</trans-unit>
+<trans-unit id="scad07cc65ad2fb30">
+  <source>Don't have an account?</source>
+  <target>アカウントをお持ちでないですか？</target>
+</trans-unit>
+<trans-unit id="s8eb24a0b585e1a03">
+  <source> Sign Up</source>
+  <target> サインアップ</target>
+</trans-unit>
+<trans-unit id="s2c15b9b13a3e2a80">
+  <source>Register</source>
+  <target>登録</target>
+</trans-unit>
+<trans-unit id="s205b3e04ad286caa">
+  <source>Already have an account?</source>
+  <target>アカウントをお持ちですか？</target>
+</trans-unit>
+<trans-unit id="s7b4ea7ef33e1c394">
+  <source> Login</source>
+  <target> ログイン</target>
+</trans-unit>
 </body>
 </file>
 </xliff>
