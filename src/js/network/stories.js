@@ -1,23 +1,13 @@
-import axios from 'axios';
-import Config from '../config/config';
-import Utils from '../utils/utils';
 import ApiEndpoint from '../config/api-endpoint';
+import http from './http';
 
 const Stories = {
   async getAll() {
-    return await axios.get(ApiEndpoint.GET_ALL_STORY, {
-      headers: {
-        Authorization: `Bearer ${Utils.getUserToken(Config.USER_TOKEN_KEY)}`,
-      },
-    });
+    return await http.get(ApiEndpoint.GET_ALL_STORY);
   },
 
   async getById(id) {
-    return await axios.get(ApiEndpoint.GET_DETAIL_STORY(id), {
-      headers: {
-        Authorization: `Bearer ${Utils.getUserToken(Config.USER_TOKEN_KEY)}`,
-      },
-    });
+    return await http.get(ApiEndpoint.GET_DETAIL_STORY(id));
   },
 
   async add({ description, photo }) {
@@ -28,19 +18,16 @@ const Stories = {
 
     try {
       const position = await getCurrentLocation();
-      const data = { description, photo };
+      const data = new FormData();
+      data.append('description', description);
+      data.append('photo', photo);
 
       if (position) {
-        data.lat = position.coords.latitude;
-        data.lon = position.coords.longitude;
+        data.append('lat', position.coords.latitude);
+        data.append('lon', position.coords.longitude);
       }
 
-      return await axios.post(ApiEndpoint.ADD_STORY, data, {
-        headers: {
-          Authorization: `Bearer ${Utils.getUserToken(Config.USER_TOKEN_KEY)}`,
-          'Content-Type': 'multipart/form-data',
-        },
-      });
+      return await http.post(ApiEndpoint.ADD_STORY, data);
     } catch (error) {
       console.error('Error making request:', error);
       throw error;
@@ -55,18 +42,16 @@ const Stories = {
 
     try {
       const position = await getCurrentLocation();
-      const data = { description, photo };
+      const data = new FormData();
+      data.append('description', description);
+      data.append('photo', photo);
 
       if (position) {
-        data.lat = position.coords.latitude;
-        data.lon = position.coords.longitude;
+        data.append('lat', position.coords.latitude);
+        data.append('lon', position.coords.longitude);
       }
 
-      return await axios.post(ApiEndpoint.ADD_STORY_GUEST_ACCOUNT, data, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-      });
+      return await http.post(ApiEndpoint.ADD_STORY_GUEST_ACCOUNT, data);
     } catch (error) {
       console.error('Error making request:', error);
       throw error;
