@@ -20,21 +20,57 @@ const Stories = {
     });
   },
 
-  async add({ name, date, amount, type, description, evidence }) {
-    const data = { name, date, amount, type, description, evidence };
+  async add({ description, photo }) {
+    const getCurrentLocation = () =>
+      new Promise((resolve) => {
+        navigator.geolocation.getCurrentPosition(resolve, () => resolve(null));
+      });
 
-    return await axios.post(ApiEndpoint.ADD_STORY, data, {
-      headers: {
-        Authorization: `Bearer ${Utils.getUserToken(Config.USER_TOKEN_KEY)}`,
-        'Content-Type': 'multipart/form-data',
-      },
-    });
+    try {
+      const position = await getCurrentLocation();
+      const data = { description, photo };
+
+      if (position) {
+        data.lat = position.coords.latitude;
+        data.lon = position.coords.longitude;
+      }
+
+      return await axios.post(ApiEndpoint.ADD_STORY, data, {
+        headers: {
+          Authorization: `Bearer ${Utils.getUserToken(Config.USER_TOKEN_KEY)}`,
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+    } catch (error) {
+      console.error('Error making request:', error);
+      throw error;
+    }
   },
 
-  async addAsGuest({ name, date, amount, type, description, evidence }) {
-    const data = { name, date, amount, type, description, evidence };
+  async addAsGuest({ description, photo }) {
+    const getCurrentLocation = () =>
+      new Promise((resolve) => {
+        navigator.geolocation.getCurrentPosition(resolve, () => resolve(null));
+      });
 
-    return await axios.post(ApiEndpoint.ADD_STORY_GUEST_ACCOUNT, data);
+    try {
+      const position = await getCurrentLocation();
+      const data = { description, photo };
+
+      if (position) {
+        data.lat = position.coords.latitude;
+        data.lon = position.coords.longitude;
+      }
+
+      return await axios.post(ApiEndpoint.ADD_STORY_GUEST_ACCOUNT, data, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+    } catch (error) {
+      console.error('Error making request:', error);
+      throw error;
+    }
   },
 };
 

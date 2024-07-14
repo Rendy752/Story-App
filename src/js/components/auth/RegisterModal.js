@@ -3,6 +3,7 @@ import { LitWithoutShadowDom } from '../base/LitWithoutShadowDom';
 import { msg, updateWhenLocaleChanges } from '@lit/localize';
 import { Modal } from 'bootstrap';
 import Auth from '../../network/auth';
+import Swal from 'sweetalert2';
 
 class RegisterModal extends LitWithoutShadowDom {
   constructor() {
@@ -48,15 +49,15 @@ class RegisterModal extends LitWithoutShadowDom {
     const formData = this._getFormData();
 
     if (this._validateFormData({ ...formData })) {
-      console.log(formData);
+      // console.log(formData);
 
       try {
         const registerSubmit = this.querySelector('#registerSubmit');
         registerSubmit.disabled = true;
         registerSubmit.innerHTML = `
         <div class="spinner-border text-secondary" role="status">
-  <span class="visually-hidden">Loading...</span>
-</div>
+          <span class="visually-hidden">Loading...</span>
+        </div>
         `;
         await Auth.register({
           name: formData.name,
@@ -66,12 +67,21 @@ class RegisterModal extends LitWithoutShadowDom {
         // await Auth.updateProfile(response.user, {
         //   displayName: formData.name,
         // });
-        window.alert('Registered a new user');
-
+        Swal.fire({
+          title: 'Success!',
+          text: 'Register success',
+          icon: 'success',
+          confirmButtonText: 'Cool',
+        });
         this._showLoginModalAndHideRegisterModal();
       } catch (error) {
-        window.alert('Register failed, please try again');
-        console.error(error);
+        Swal.fire({
+          title: 'Error!',
+          text: error.response.data.message,
+          icon: 'error',
+          confirmButtonText: 'Cool',
+        });
+        // console.error(error);
       } finally {
         registerSubmit.disabled = false;
         registerSubmit.innerHTML = msg('Register');

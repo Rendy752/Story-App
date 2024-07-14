@@ -6,6 +6,7 @@ import Config from '../../config/config';
 import Utils from '../../utils/utils';
 import Auth from '../../network/auth';
 import CheckUserAuth from '../../pages/auth/check-user-auth';
+import Swal from 'sweetalert2';
 
 class LoginModal extends LitWithoutShadowDom {
   constructor() {
@@ -48,16 +49,16 @@ class LoginModal extends LitWithoutShadowDom {
     const formData = this._getFormData();
 
     if (this._validateFormData({ ...formData })) {
-      console.log(formData);
+      // console.log(formData);
 
       try {
         const loginSubmit = this.querySelector('#loginSubmit');
         loginSubmit.disabled = true;
         loginSubmit.innerHTML = `
         <div class="spinner-border text-secondary" role="status">
-  <span class="visually-hidden">Loading...</span>
-</div>
-`;
+          <span class="visually-hidden">Loading...</span>
+        </div>
+        `;
         const response = await Auth.login({
           email: formData.email,
           password: formData.password,
@@ -69,7 +70,12 @@ class LoginModal extends LitWithoutShadowDom {
         );
         Utils.setUserName(Config.USER_NAME_KEY, response.data.loginResult.name);
         CheckUserAuth.checkLoginState();
-        window.alert('Login success');
+        Swal.fire({
+          title: 'Success!',
+          text: 'Login success',
+          icon: 'success',
+          confirmButtonText: 'Cool',
+        });
         const loginModalElement = this.querySelector('#loginModal');
 
         if (loginModalElement) {
@@ -78,8 +84,13 @@ class LoginModal extends LitWithoutShadowDom {
           document.querySelector('.modal-backdrop').remove();
         }
       } catch (error) {
-        window.alert('Login failed, please try again');
-        console.error(error);
+        Swal.fire({
+          title: 'Error!',
+          text: error.response.data.message,
+          icon: 'error',
+          confirmButtonText: 'OK',
+        });
+        // console.error(error);
       } finally {
         loginSubmit.disabled = false;
         loginSubmit.innerHTML = msg('Login');

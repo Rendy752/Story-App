@@ -1,3 +1,8 @@
+import Stories from '../../network/stories';
+import Utils from '../../utils/utils';
+import Config from '../../config/config';
+import Swal from 'sweetalert2';
+
 const Add = {
   async init() {
     this._initialListener();
@@ -18,18 +23,51 @@ const Add = {
     );
   },
 
-  _sendPost() {
+  async _sendPost() {
     const formData = this._getFormData();
 
     if (this._validateFormData({ ...formData })) {
       console.log(formData);
 
-      // this._goToDashboardPage();
+      try {
+        const addSubmit = document.querySelector('#addSubmit');
+        addSubmit.disabled = true;
+        addSubmit.innerHTML = `
+        <div class="spinner-border text-secondary" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+        `;
+        const userToken = Utils.getUserToken(Config.USER_TOKEN_KEY);
+        const isUserSignedIn = Boolean(userToken);
+        if (isUserSignedIn) {
+          await Stories.add(formData);
+        } else {
+          await Stories.addAsGuest(formData);
+        }
+        Swal.fire({
+          title: 'Success',
+          text: 'Story has been added',
+          icon: 'success',
+          confirmButtonText: 'Ok',
+        });
+        this._goToDashboardPage();
+      } catch (error) {
+        Swal.fire({
+          title: 'Error',
+          text: error.response.data.message,
+          icon: 'error',
+          confirmButtonText: 'Ok',
+        });
+        // console.error(error);
+      } finally {
+        addSubmit.disabled = false;
+        addSubmit.innerHTML = 'Add';
+      }
     }
   },
 
   _getFormData() {
-    const nameInput = document.querySelector('#validationCustomName');
+    // const nameInput = document.querySelector('#validationCustomStoryName');
     const photoInput = document.querySelector('#validationCustomPhoto');
     const descriptionInput = document.querySelector(
       '#validationCustomDescription',
@@ -37,8 +75,8 @@ const Add = {
 
     return {
       id: new Date().getTime(),
-      name: nameInput.value,
-      photoUrl: photoInput.files[0]?.name,
+      // name: nameInput.value,
+      photo: photoInput.files[0],
       description: descriptionInput.value,
       createdAt: new Date().toISOString(),
     };

@@ -1,14 +1,20 @@
 import { LitElement, html, css } from 'lit';
 import storyContentStyles from '../../css/vendors-extensions/story-content.css';
+import Stories from '../network/stories';
+import Utils from '../utils/utils';
+import Config from '../config/config';
+import { msg, updateWhenLocaleChanges } from '@lit/localize';
 
 class StoryContent extends LitElement {
   static properties = {
     stories: { type: Array },
+    isUserSignedIn: { type: Boolean },
   };
 
   constructor() {
     super();
     this.init();
+    updateWhenLocaleChanges(this);
   }
 
   async init() {
@@ -16,13 +22,28 @@ class StoryContent extends LitElement {
   }
 
   async _initialData() {
-    const fetchData = require('../../public/data/DATA');
-    const data = await fetchData();
-    if (!data) {
-      throw new Error('Data is not found');
+    try {
+      if (!this.isUserSignedIn) {
+        return;
+      }
+      const userToken = Utils.getUserToken(Config.USER_TOKEN_KEY);
+      this.isUserSignedIn = Boolean(userToken);
+
+      if (this.isUserSignedIn) {
+        const response = await Stories.getAll();
+        const listStory = response.data.listStory;
+        this._stories = listStory;
+        this._populateStoriesDataToCard(this._stories);
+      }
+    } catch (error) {
+      console.error(error);
     }
-    this._stories = data;
-    this._populateStoriesDataToCard(this._stories);
+  }
+
+  updated(changedProperties) {
+    if (changedProperties.has('isUserSignedIn')) {
+      this._initialData();
+    }
   }
 
   _populateStoriesDataToCard(stories = null) {
@@ -48,6 +69,17 @@ class StoryContent extends LitElement {
     }
   }
 
+  _templateNotLoggedInCardContent() {
+    return html`
+      <div
+        class="empty-card"
+        style="text-align: center; font-size: 1.5rem; color: #6c757d;"
+      >
+        ${msg('Please login to see the stories')}
+      </div>
+    `;
+  }
+
   _templateCardContent(story) {
     return `
         <story-item class="col" ontouchstart="this.classList.toggle('hover');" id="${story.id}" name="${story.name}" description="${story.description}" photourl="${story.photoUrl}" createdat="${story.createdAt}"></story-item>
@@ -55,15 +87,26 @@ class StoryContent extends LitElement {
   }
 
   _templateEmptyCardContent() {
-    return html` <div class="empty-card">There is no story available</div> `;
+    return html`
+      <div
+        class="empty-card"
+        style="text-align: center; font-size: 1.5rem; color: #6c757d;"
+      >
+        ${msg('There is no story available')}
+      </div>
+    `;
   }
 
   static styles = css([`${storyContentStyles}`]);
 
   render() {
-    return html`
-      <div class="wrapper"><div class="cols" id="cardItem"></div></div>
-    `;
+    if (!this.isUserSignedIn) {
+      return this._templateNotLoggedInCardContent();
+    } else {
+      return html`
+        <div class="wrapper"><div class="cols" id="cardItem"></div></div>
+      `;
+    }
   }
 }
 

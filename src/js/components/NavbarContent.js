@@ -6,6 +6,7 @@ import { Modal } from 'bootstrap';
 import Utils from '../utils/utils';
 import Config from '../config/config';
 import CheckUserAuth from '../pages/auth/check-user-auth';
+import Swal from 'sweetalert2';
 
 class NavbarContent extends LitWithoutShadowDom {
   static properties = {
@@ -130,9 +131,20 @@ class NavbarContent extends LitWithoutShadowDom {
     Utils.destroyUserToken(Config.USER_TOKEN_KEY);
     Utils.destroyUserName(Config.USER_NAME_KEY);
     CheckUserAuth.checkLoginState();
+    Swal.fire({
+      title: 'Success!',
+      text: 'Successfully logged out',
+      icon: 'success',
+      confirmButtonText: 'Cool',
+    });
     // try {
     //   await Auth.logout();
-    //   window.alert('Successfully logged out');
+    //   Swal.fire({
+    //   title: 'Success!',
+    //   text: 'Successfully logged out',
+    //   icon: 'success',
+    //   confirmButtonText: 'Cool',
+    // });
     //   CheckUserAuth.checkLoginState();
     // } catch (error) {
     //   console.error(error);

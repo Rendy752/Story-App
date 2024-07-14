@@ -14,6 +14,10 @@ const CheckUserAuth = {
 
     const userToken = Utils.getUserToken(Config.USER_TOKEN_KEY);
     const isUserSignedIn = Boolean(userToken);
+    const storyContentInstance = document.querySelector('story-content');
+    if (storyContentInstance) {
+      storyContentInstance.isUserSignedIn = isUserSignedIn;
+    }
     this._showLoginMenuOrUserLogMenu(isUserSignedIn);
   },
 
