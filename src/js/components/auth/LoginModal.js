@@ -39,8 +39,6 @@ class LoginModal extends LitWithoutShadowDom {
         loginModalElement.style.display = 'none';
         document.querySelector('.modal-backdrop').remove();
         registerModal.show();
-      } else {
-        console.error('Register modal element not found');
       }
     });
   }
@@ -92,6 +90,7 @@ class LoginModal extends LitWithoutShadowDom {
         });
         // console.error(error);
       } finally {
+        const loginSubmit = this.querySelector('#loginSubmit');
         loginSubmit.disabled = false;
         loginSubmit.innerHTML = msg('Login');
       }

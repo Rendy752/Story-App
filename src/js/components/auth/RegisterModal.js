@@ -40,8 +40,6 @@ class RegisterModal extends LitWithoutShadowDom {
       registerModalElement.style.display = 'none';
       document.querySelector('.modal-backdrop').remove();
       loginModal.show();
-    } else {
-      console.error('Register modal element not found');
     }
   }
 
@@ -83,6 +81,7 @@ class RegisterModal extends LitWithoutShadowDom {
         });
         // console.error(error);
       } finally {
+        const registerSubmit = this.querySelector('#registerSubmit');
         registerSubmit.disabled = false;
         registerSubmit.innerHTML = msg('Register');
       }

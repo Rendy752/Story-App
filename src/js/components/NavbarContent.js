@@ -21,8 +21,6 @@ class NavbarContent extends LitWithoutShadowDom {
         const loginModal = new Modal(loginModalElement);
 
         loginModal.show();
-      } else {
-        console.error('Login modal element not found');
       }
     });
   }

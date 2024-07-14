@@ -24,7 +24,7 @@ class NavLink extends LitWithoutShadowDom {
       case 'Profile':
         return msg('Profile');
       default:
-        return nothing;
+        return this.name;
     }
   }
 

@@ -1,3 +1,5 @@
+const { default: Swal } = require('sweetalert2');
+
 const fetchData = async () => {
   const url =
     'https://raw.githubusercontent.com/dicodingacademy/a565-webtools-labs/099-shared-files/proyek-awal/DATA.json';
@@ -9,8 +11,12 @@ const fetchData = async () => {
     const data = await response.json();
     return data.listStory;
   } catch (error) {
-    console.error('Error fetching data:', error);
-    return null;
+    Swal.fire({
+      title: 'Error',
+      text: error.response.data.message,
+      icon: 'error',
+      confirmButtonText: 'Ok',
+    });
   }
 };
 

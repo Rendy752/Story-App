@@ -1,3 +1,4 @@
+import Swal from 'sweetalert2';
 import ApiEndpoint from '../config/api-endpoint';
 import http from './http';
 
@@ -29,8 +30,12 @@ const Stories = {
 
       return await http.post(ApiEndpoint.ADD_STORY, data);
     } catch (error) {
-      console.error('Error making request:', error);
-      throw error;
+      Swal.fire({
+        title: 'Error',
+        text: error.response.data.message,
+        icon: 'error',
+        confirmButtonText: 'Ok',
+      });
     }
   },
 
@@ -53,8 +58,12 @@ const Stories = {
 
       return await http.post(ApiEndpoint.ADD_STORY_GUEST_ACCOUNT, data);
     } catch (error) {
-      console.error('Error making request:', error);
-      throw error;
+      Swal.fire({
+        title: 'Error',
+        text: error.response.data.message,
+        icon: 'error',
+        confirmButtonText: 'Ok',
+      });
     }
   },
 };

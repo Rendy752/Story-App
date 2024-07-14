@@ -4,6 +4,7 @@ import Stories from '../network/stories';
 import Utils from '../utils/utils';
 import Config from '../config/config';
 import { msg, updateWhenLocaleChanges } from '@lit/localize';
+import Swal from 'sweetalert2';
 
 class StoryContent extends LitElement {
   static properties = {
@@ -36,7 +37,12 @@ class StoryContent extends LitElement {
         this._populateStoriesDataToCard(this._stories);
       }
     } catch (error) {
-      console.error(error);
+      Swal.fire({
+        title: 'Error',
+        text: error.response.data.message,
+        icon: 'error',
+        confirmButtonText: 'Ok',
+      });
     }
   }
 

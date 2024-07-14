@@ -27,7 +27,7 @@ const Add = {
     const formData = this._getFormData();
 
     if (this._validateFormData({ ...formData })) {
-      console.log(formData);
+      // console.log(formData);
 
       try {
         const addSubmit = document.querySelector('#addSubmit');
@@ -60,6 +60,7 @@ const Add = {
         });
         // console.error(error);
       } finally {
+        const addSubmit = document.querySelector('#addSubmit');
         addSubmit.disabled = false;
         addSubmit.innerHTML = 'Add';
       }

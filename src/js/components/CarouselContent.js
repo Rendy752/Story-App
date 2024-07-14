@@ -3,6 +3,7 @@ import carouselStyles from '../../css/vendors-extensions/carousel.css';
 import Stories from '../network/stories';
 import Utils from '../utils/utils';
 import Config from '../config/config';
+import Swal from 'sweetalert2';
 
 class CarouselContent extends LitElement {
   static properties = {
@@ -35,7 +36,12 @@ class CarouselContent extends LitElement {
       }
       this._storiesPicture = listStory.map((item) => item.photoUrl);
     } catch (error) {
-      console.error(error);
+      Swal.fire({
+        title: 'Error',
+        text: error.response.data.message,
+        icon: 'error',
+        confirmButtonText: 'Ok',
+      });
     }
   }
 
