@@ -2,7 +2,9 @@ import { html } from 'lit';
 import { LitWithoutShadowDom } from './base/LitWithoutShadowDom';
 import { msg, updateWhenLocaleChanges } from '@lit/localize';
 import { Modal } from 'bootstrap';
-import Auth from '../network/auth';
+// import Auth from '../network/auth';
+import Utils from '../utils/utils';
+import Config from '../config/config';
 import CheckUserAuth from '../pages/auth/check-user-auth';
 
 class NavbarContent extends LitWithoutShadowDom {
@@ -125,14 +127,16 @@ class NavbarContent extends LitWithoutShadowDom {
 
   async _userLogOut(event) {
     event.preventDefault();
-
-    try {
-      await Auth.logout();
-      window.alert('Successfully logged out');
-      CheckUserAuth.checkLoginState();
-    } catch (error) {
-      console.error(error);
-    }
+    Utils.destroyUserToken(Config.USER_TOKEN_KEY);
+    Utils.destroyUserName(Config.USER_NAME_KEY);
+    CheckUserAuth.checkLoginState();
+    // try {
+    //   await Auth.logout();
+    //   window.alert('Successfully logged out');
+    //   CheckUserAuth.checkLoginState();
+    // } catch (error) {
+    //   console.error(error);
+    // }
   }
 }
 

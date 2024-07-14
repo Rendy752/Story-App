@@ -5,6 +5,7 @@ import { Modal } from 'bootstrap';
 import Config from '../../config/config';
 import Utils from '../../utils/utils';
 import Auth from '../../network/auth';
+import CheckUserAuth from '../../pages/auth/check-user-auth';
 
 class LoginModal extends LitWithoutShadowDom {
   constructor() {
@@ -50,11 +51,24 @@ class LoginModal extends LitWithoutShadowDom {
       console.log(formData);
 
       try {
+        const loginSubmit = this.querySelector('#loginSubmit');
+        loginSubmit.disabled = true;
+        loginSubmit.innerHTML = `
+        <div class="spinner-border text-secondary" role="status">
+  <span class="visually-hidden">Loading...</span>
+</div>
+`;
         const response = await Auth.login({
           email: formData.email,
           password: formData.password,
         });
-        Utils.setUserToken(Config.USER_TOKEN_KEY, response.user.accessToken);
+        // Utils.setUserToken(Config.USER_TOKEN_KEY, response.user.accessToken);
+        Utils.setUserToken(
+          Config.USER_TOKEN_KEY,
+          response.data.loginResult.token,
+        );
+        Utils.setUserName(Config.USER_NAME_KEY, response.data.loginResult.name);
+        CheckUserAuth.checkLoginState();
         window.alert('Login success');
         const loginModalElement = this.querySelector('#loginModal');
 
@@ -66,6 +80,9 @@ class LoginModal extends LitWithoutShadowDom {
       } catch (error) {
         window.alert('Login failed, please try again');
         console.error(error);
+      } finally {
+        loginSubmit.disabled = false;
+        loginSubmit.innerHTML = msg('Login');
       }
     }
   }
@@ -123,6 +140,7 @@ class LoginModal extends LitWithoutShadowDom {
 
                   <button
                     type="submit"
+                    id="loginSubmit"
                     class="btn btn-info btn-block btn-round"
                   >
                     ${msg('Login')}

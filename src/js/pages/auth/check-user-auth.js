@@ -1,16 +1,23 @@
-import { onAuthStateChanged } from 'firebase/auth';
-import { auth } from '../../utils/firebase';
-import Auth from '../../network/auth';
+// import { onAuthStateChanged } from 'firebase/auth';
+// import { auth } from '../../utils/firebase';
+// import Auth from '../../network/auth';
+
+import Utils from '../../utils/utils';
+import Config from '../../config/config';
 
 const CheckUserAuth = {
   checkLoginState() {
-    onAuthStateChanged(auth, (user) => {
-      const isUserSignedIn = Boolean(user);
-      this._showLoginMenuOrUserLogMenu(isUserSignedIn);
-    });
+    // onAuthStateChanged(auth, (user) => {
+    //   const isUserSignedIn = Boolean(user);
+    //   this._showLoginMenuOrUserLogMenu(isUserSignedIn);
+    // });
+
+    const userToken = Utils.getUserToken(Config.USER_TOKEN_KEY);
+    const isUserSignedIn = Boolean(userToken);
+    this._showLoginMenuOrUserLogMenu(isUserSignedIn);
   },
 
-  async _showLoginMenuOrUserLogMenu(userLoginState) {
+  _showLoginMenuOrUserLogMenu(userLoginState) {
     const loginBtn = document.querySelector('#loginBtn');
     const userLoggedMenu = document.querySelector('#userLoggedMenu');
     const logoutBtn = document.querySelector('#logoutBtn');
@@ -29,7 +36,8 @@ const CheckUserAuth = {
 
     loginBtn?.classList.add('d-none');
     if (userLoggedMenu) {
-      userLoggedMenu.innerHTML = 'Hello, ' + (await Auth.showProfileName());
+      userLoggedMenu.innerHTML =
+        'Hello, ' + Utils.getUserName(Config.USER_NAME_KEY);
       userLoggedMenu.classList.add('d-block');
     }
     logoutBtn?.classList.add('d-block');

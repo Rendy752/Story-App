@@ -51,19 +51,30 @@ class RegisterModal extends LitWithoutShadowDom {
       console.log(formData);
 
       try {
-        const response = await Auth.register({
+        const registerSubmit = this.querySelector('#registerSubmit');
+        registerSubmit.disabled = true;
+        registerSubmit.innerHTML = `
+        <div class="spinner-border text-secondary" role="status">
+  <span class="visually-hidden">Loading...</span>
+</div>
+        `;
+        await Auth.register({
+          name: formData.name,
           email: formData.email,
           password: formData.password,
         });
-        await Auth.updateProfile(response.user, {
-          displayName: formData.name,
-        });
+        // await Auth.updateProfile(response.user, {
+        //   displayName: formData.name,
+        // });
         window.alert('Registered a new user');
 
         this._showLoginModalAndHideRegisterModal();
       } catch (error) {
         window.alert('Register failed, please try again');
         console.error(error);
+      } finally {
+        registerSubmit.disabled = false;
+        registerSubmit.innerHTML = msg('Register');
       }
     }
   }
@@ -131,6 +142,7 @@ class RegisterModal extends LitWithoutShadowDom {
 
                   <button
                     type="submit"
+                    id="registerSubmit"
                     class="btn btn-info btn-block btn-round"
                   >
                     ${msg('Register')}
