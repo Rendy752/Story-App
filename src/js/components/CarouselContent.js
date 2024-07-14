@@ -1,9 +1,13 @@
 import { LitElement, html, css } from 'lit';
 import carouselStyles from '../../css/vendors-extensions/carousel.css';
+import Stories from '../network/stories';
+import Utils from '../utils/utils';
+import Config from '../config/config';
 
 class CarouselContent extends LitElement {
   static properties = {
     _storiesPicture: { type: Array },
+    isUserSignedIn: { type: Boolean },
   };
 
   constructor() {
@@ -18,12 +22,21 @@ class CarouselContent extends LitElement {
   }
 
   async _initialData() {
-    const fetchData = require('../../public/data/DATA');
-    const data = await fetchData();
-    if (!data) {
-      throw new Error('Data is not found');
+    try {
+      let listStory = [];
+      const userToken = Utils.getUserToken(Config.USER_TOKEN_KEY);
+      this.isUserSignedIn = Boolean(userToken);
+      if (!this.isUserSignedIn) {
+        const fetchData = require('../../public/data/DATA');
+        listStory = await fetchData();
+      } else {
+        const response = await Stories.getAll();
+        listStory = response.data.listStory;
+      }
+      this._storiesPicture = listStory.map((item) => item.photoUrl);
+    } catch (error) {
+      console.error(error);
     }
-    this._storiesPicture = data.map((item) => item.photoUrl);
   }
 
   _populateCarousel() {

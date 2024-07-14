@@ -1,4 +1,4 @@
-.carousel > input[type=radio]:nth-child(9):checked ~ .carousel__next > label:nth-child(1), .carousel > input[type=radio]:nth-child(9):checked ~ .carousel__prev > label:nth-child(8), .carousel > input[type=radio]:nth-child(8):checked ~ .carousel__next > label:nth-child(9), .carousel > input[type=radio]:nth-child(8):checked ~ .carousel__prev > label:nth-child(7), .carousel > input[type=radio]:nth-child(7):checked ~ .carousel__next > label:nth-child(8), .carousel > input[type=radio]:nth-child(7):checked ~ .carousel__prev > label:nth-child(6), .carousel > input[type=radio]:nth-child(6):checked ~ .carousel__next > label:nth-child(7), .carousel > input[type=radio]:nth-child(6):checked ~ .carousel__prev > label:nth-child(5), .carousel > input[type=radio]:nth-child(5):checked ~ .carousel__next > label:nth-child(6), .carousel > input[type=radio]:nth-child(5):checked ~ .carousel__prev > label:nth-child(4), .carousel > input[type=radio]:nth-child(4):checked ~ .carousel__next > label:nth-child(5), .carousel > input[type=radio]:nth-child(4):checked ~ .carousel__prev > label:nth-child(3), .carousel > input[type=radio]:nth-child(3):checked ~ .carousel__next > label:nth-child(4), .carousel > input[type=radio]:nth-child(3):checked ~ .carousel__prev > label:nth-child(2), .carousel > input[type=radio]:nth-child(2):checked ~ .carousel__next > label:nth-child(3), .carousel > input[type=radio]:nth-child(2):checked ~ .carousel__prev > label:nth-child(1), .carousel > input[type=radio]:nth-child(1):checked ~ .carousel__next > label:nth-child(2), .carousel > input[type=radio]:nth-child(1):checked ~ .carousel__prev > label:nth-child(9), .carousel-item {
+.carousel > input[type=radio]:nth-child(10):checked ~ .carousel__next > label:nth-child(1), .carousel > input[type=radio]:nth-child(10):checked ~ .carousel__prev > label:nth-child(9), .carousel > input[type=radio]:nth-child(9):checked ~ .carousel__next > label:nth-child(10), .carousel > input[type=radio]:nth-child(9):checked ~ .carousel__prev > label:nth-child(8), .carousel > input[type=radio]:nth-child(8):checked ~ .carousel__next > label:nth-child(9), .carousel > input[type=radio]:nth-child(8):checked ~ .carousel__prev > label:nth-child(7), .carousel > input[type=radio]:nth-child(7):checked ~ .carousel__next > label:nth-child(8), .carousel > input[type=radio]:nth-child(7):checked ~ .carousel__prev > label:nth-child(6), .carousel > input[type=radio]:nth-child(6):checked ~ .carousel__next > label:nth-child(7), .carousel > input[type=radio]:nth-child(6):checked ~ .carousel__prev > label:nth-child(5), .carousel > input[type=radio]:nth-child(5):checked ~ .carousel__next > label:nth-child(6), .carousel > input[type=radio]:nth-child(5):checked ~ .carousel__prev > label:nth-child(4), .carousel > input[type=radio]:nth-child(4):checked ~ .carousel__next > label:nth-child(5), .carousel > input[type=radio]:nth-child(4):checked ~ .carousel__prev > label:nth-child(3), .carousel > input[type=radio]:nth-child(3):checked ~ .carousel__next > label:nth-child(4), .carousel > input[type=radio]:nth-child(3):checked ~ .carousel__prev > label:nth-child(2), .carousel > input[type=radio]:nth-child(2):checked ~ .carousel__next > label:nth-child(3), .carousel > input[type=radio]:nth-child(2):checked ~ .carousel__prev > label:nth-child(1), .carousel > input[type=radio]:nth-child(1):checked ~ .carousel__next > label:nth-child(2), .carousel > input[type=radio]:nth-child(1):checked ~ .carousel__prev > label:nth-child(10), .carousel-item {
   opacity: 1 !important;
   z-index: 3;
 }
@@ -90,6 +90,14 @@
   opacity: 1;
 }
 .carousel > input[type=radio]:nth-child(9):checked ~ .carousel__nav > label:nth-child(9) {
+  background: #ccc;
+  cursor: default;
+  pointer-events: none;
+}
+.carousel > input[type=radio]:nth-child(10):checked ~ .carousel__items .carousel__item:nth-child(10) {
+  opacity: 1;
+}
+.carousel > input[type=radio]:nth-child(10):checked ~ .carousel__nav > label:nth-child(10) {
   background: #ccc;
   cursor: default;
   pointer-events: none;
